@@ -3,17 +3,9 @@ pipeline {
     label 'jenkins-slave-java'
   }
   stages {
-    // stage('Prepare environment') {
-    //   steps {
-    //     sh 'apk add git'
-    //   }
-    // }
-    // stage('Clone code from Git') {
-    //   steps {
-    //     sh 'git clone https://github.com/yikiksistemci/maven-example.git'
-    //   }
-    // }
-
+    stage('Show Parameters'){
+        currentBuild.displayName = "${BUILD_NUMBER}.${GIT_COMMIT}"
+    }
     stage('Build'){
         steps{
             sh 'mvn package'
