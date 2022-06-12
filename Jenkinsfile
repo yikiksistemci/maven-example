@@ -10,9 +10,14 @@ pipeline {
     }
     stage('Clone code from Git') {
       steps {
-        sh 'git clone https://github.com/linuxacademy/content-pipelines-cje-labs.git'
-        sh 'pip install -r content-pipelines-cje-labs/lab3_lab4/dog_pics_downloader/requirements.txt'
+        sh 'git clone https://github.com/yikiksistemci/maven-example.git'
       }
+    }
+
+    stage('Build'){
+        steps{
+            sh 'mvn package'
+        }
     }
   }
   post {
@@ -20,14 +25,14 @@ pipeline {
       echo "Job execution complete."
     }
     success {
-      archiveArtifacts artifacts: '*.jpg'
+      archiveArtifacts artifacts: 'target/*'
     }
     unsuccessful {
       echo "Job execution status is failed, please check error logs"
     }
     cleanup {
       echo 'Cleaning up environment'
-      sh 'rm -rf content-pipelines-cje-labs'
+      sh 'rm -rf maven-example'
     }
   }
 }
