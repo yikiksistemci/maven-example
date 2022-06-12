@@ -4,7 +4,10 @@ pipeline {
   }
   stages {
     stage('Show Parameters'){
-        currentBuild.displayName = "${BUILD_NUMBER}.${GIT_COMMIT}"
+        steps{
+            currentBuild.displayName = "${BUILD_NUMBER}.${GIT_COMMIT}"
+            sh 'echo ${GIT_COMMIT}'
+        }
     }
     stage('Build'){
         steps{
