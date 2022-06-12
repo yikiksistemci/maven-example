@@ -3,16 +3,16 @@ pipeline {
     label 'jenkins-slave-java'
   }
   stages {
-    stage('Prepare environment') {
-      steps {
-        sh 'apk add git'
-      }
-    }
-    stage('Clone code from Git') {
-      steps {
-        sh 'git clone https://github.com/yikiksistemci/maven-example.git'
-      }
-    }
+    // stage('Prepare environment') {
+    //   steps {
+    //     sh 'apk add git'
+    //   }
+    // }
+    // stage('Clone code from Git') {
+    //   steps {
+    //     sh 'git clone https://github.com/yikiksistemci/maven-example.git'
+    //   }
+    // }
 
     stage('Build'){
         steps{
